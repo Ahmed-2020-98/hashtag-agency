@@ -1,0 +1,41 @@
+.cta {
+    padding: 48px 0;
+}
+
+.gradient {
+    background: var(--grad-cta);
+}
+
+.light {
+    background: rgba(89, 6, 150, 0.04);
+    border-top: 1px solid rgba(89, 6, 150, 0.06);
+    border-bottom: 1px solid rgba(89, 6, 150, 0.06);
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-size: var(--fs-h3);
+    font-weight: 700;
+}
+
+.gradient .title {
+    color: var(--c-white);
+}
+
+.light .title {
+    color: var(--c-primary);
+}
+
+@media (max-width: 768px) {
+    .inner {
+        flex-direction: column;
+        text-align: center;
+    }
+}

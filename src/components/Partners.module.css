@@ -1,0 +1,103 @@
+.partners {
+    background: var(--c-bg);
+    overflow: hidden;
+}
+
+.sliderWrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.sliderWrapper::before,
+.sliderWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.sliderWrapper::before {
+    right: 0;
+    background: linear-gradient(to left, var(--c-bg), transparent);
+}
+
+.sliderWrapper::after {
+    left: 0;
+    background: linear-gradient(to right, var(--c-bg), transparent);
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.track {
+    display: flex;
+    gap: 24px;
+    animation: scrollPartners 30s linear infinite;
+    width: max-content;
+}
+
+@keyframes scrollPartners {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Logo Card */
+.logoCard {
+    flex-shrink: 0;
+    width: 200px;
+    height: 90px;
+    border-radius: var(--radius-md);
+    background: var(--c-card-bg);
+    border: 1px solid rgba(89, 6, 150, 0.08);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--tr-normal);
+    cursor: default;
+}
+
+.logoCard:hover {
+    border-color: rgba(0, 215, 255, 0.3);
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px);
+}
+
+.logoInner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    filter: grayscale(100%);
+    opacity: 0.5;
+    transition: all var(--tr-normal);
+}
+
+.logoCard:hover .logoInner {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.logoHash {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--c-secondary);
+}
+
+.logoName {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    white-space: nowrap;
+}
