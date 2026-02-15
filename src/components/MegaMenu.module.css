@@ -1,0 +1,284 @@
+/* ===== MegaMenu Desktop ===== */
+.megaMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 16px 48px rgba(89, 6, 150, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 998;
+    overflow: hidden;
+}
+
+.bgHash {
+    position: absolute;
+    top: -30px;
+    left: 40px;
+    font-size: 260px;
+    font-weight: 900;
+    color: var(--c-primary);
+    opacity: 0.02;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+}
+
+.inner {
+    padding: 40px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+}
+
+/* ── Columns ── */
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.colTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--c-primary);
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(89, 6, 150, 0.08);
+}
+
+.colIcon {
+    font-size: 1.2rem;
+}
+
+/* Links */
+.linkList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--c-text-light);
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.link::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 60%;
+    border-radius: 4px;
+    background: var(--c-secondary);
+    transition: width 0.25s ease;
+}
+
+.link:hover {
+    color: var(--c-secondary);
+    background: rgba(0, 215, 255, 0.04);
+    padding-right: 18px;
+}
+
+.link:hover::before {
+    width: 3px;
+}
+
+.linkArrow {
+    font-size: 0.75rem;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: all 0.25s ease;
+    color: var(--c-secondary);
+}
+
+.link:hover .linkArrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ── CTA Box ── */
+.ctaBox {
+    position: relative;
+    background: linear-gradient(145deg, #590696, #3a0463);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ctaGlow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 215, 255, 0.2), transparent 70%);
+    pointer-events: none;
+}
+
+.ctaEmoji {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.ctaTitle {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--c-white);
+    margin-bottom: 8px;
+}
+
+.ctaDesc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.ctaBtn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
+    background: var(--c-white);
+    color: var(--c-primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid var(--c-white);
+}
+
+.ctaBtn:hover {
+    background: var(--c-secondary);
+    border-color: var(--c-secondary);
+    color: var(--c-dark-bg);
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-2px);
+}
+
+/* ── Bottom Border ── */
+.bottomBorder {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--c-secondary) 30%, var(--c-secondary) 70%, transparent 100%);
+}
+
+/* ===== Mobile Accordion ===== */
+.mobileAccordion {
+    overflow: hidden;
+    padding: 0 8px;
+}
+
+.accordionItem {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.accordionTrigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 8px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.accordionTrigger:hover,
+.accordionTrigger.accordionOpen {
+    color: var(--c-secondary);
+}
+
+.accordionChevron {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--c-secondary);
+}
+
+.accordionLinks {
+    overflow: hidden;
+    padding: 0 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.accordionLink {
+    display: block;
+    padding: 8px 12px;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius-sm);
+    transition: all 0.25s ease;
+}
+
+.accordionLink:hover {
+    color: var(--c-secondary);
+    background: rgba(0, 215, 255, 0.06);
+}
+
+/* Mobile CTA */
+.mobileCta {
+    padding: 16px 8px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 8px;
+}
+
+.mobileCtaText {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+
+.mobileCtaBtn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
+    background: var(--c-secondary);
+    color: var(--c-dark-bg);
+    font-size: 0.88rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.mobileCtaBtn:hover {
+    box-shadow: var(--glow-secondary);
+    transform: translateY(-1px);
+}
+
+/* ── Responsive hide on mobile ── */
+@media (max-width: 900px) {
+    .megaMenu {
+        display: none;
+    }
+}

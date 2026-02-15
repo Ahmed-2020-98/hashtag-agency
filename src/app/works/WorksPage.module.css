@@ -1,0 +1,338 @@
+/* ===== Works Page ===== */
+
+.page {
+    min-height: 100vh;
+    background: var(--c-bg);
+}
+
+/* ===== Hero ===== */
+.hero {
+    position: relative;
+    background: var(--grad-hero);
+    padding: 140px 0 80px;
+    overflow: hidden;
+}
+
+.heroPattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03);
+    user-select: none;
+    pointer-events: none;
+}
+
+.heroContent {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.heroTitle {
+    font-size: var(--fs-hero);
+    font-weight: 900;
+    color: var(--c-white);
+    margin-bottom: 20px;
+}
+
+.heroDesc {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.highlight {
+    color: var(--c-secondary);
+    font-weight: 700;
+}
+
+/* ===== Projects Section ===== */
+.projectsSection {
+    padding: 80px 0;
+}
+
+/* ===== Filter Bar ===== */
+.filterBar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.filterBtn {
+    position: relative;
+    background: var(--c-white);
+    border: 2px solid rgba(89, 6, 150, 0.12);
+    color: var(--c-text);
+    padding: 12px 28px;
+    border-radius: var(--radius-full);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all var(--tr-normal);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+}
+
+.filterBtn:hover {
+    border-color: var(--c-secondary);
+    color: var(--c-primary);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+}
+
+.filterBtnActive {
+    color: var(--c-white);
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+}
+
+.filterIndicator {
+    position: absolute;
+    inset: -2px;
+    border: 2px solid var(--c-secondary);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 16px rgba(0, 215, 255, 0.4);
+    pointer-events: none;
+}
+
+/* ===== Grid ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* ===== Card ===== */
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    min-height: 360px;
+    cursor: pointer;
+    transition: transform var(--tr-normal), box-shadow var(--tr-normal);
+    box-shadow: var(--shadow-card);
+    background: var(--c-white);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(89, 6, 150, 0.18);
+}
+
+/* Card Image */
+.cardImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.cardImage img {
+    transition: transform 0.6s ease !important;
+}
+
+.card:hover .cardImage img {
+    transform: scale(1.1) !important;
+}
+
+/* Card BG (for projects without thumbnails) */
+.cardBg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(89, 6, 150, 0.08), rgba(0, 215, 255, 0.05));
+    border: 1px solid rgba(89, 6, 150, 0.08);
+}
+
+.cardPattern {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7rem;
+    font-weight: 900;
+    color: rgba(89, 6, 150, 0.05);
+    user-select: none;
+}
+
+/* Overlay gradient */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(35, 31, 32, 0.95) 0%,
+            rgba(35, 31, 32, 0.6) 35%,
+            rgba(89, 6, 150, 0.2) 65%,
+            transparent 100%);
+    z-index: 1;
+    transition: background var(--tr-normal);
+}
+
+.card:hover .overlay {
+    background: linear-gradient(to top,
+            rgba(35, 31, 32, 0.98) 0%,
+            rgba(89, 6, 150, 0.6) 45%,
+            rgba(0, 215, 255, 0.15) 100%);
+}
+
+/* Card Content */
+.cardContent {
+    position: relative;
+    z-index: 2;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.category {
+    display: inline-block;
+    background: rgba(0, 215, 255, 0.18);
+    color: var(--c-secondary);
+    padding: 6px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    width: fit-content;
+    border: 1px solid rgba(0, 215, 255, 0.3);
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--c-white);
+    margin-bottom: 10px;
+    transition: color var(--tr-normal);
+}
+
+.card:hover .cardTitle {
+    color: var(--c-secondary);
+}
+
+.cardDesc {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.viewProject {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--c-secondary);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity var(--tr-normal), transform var(--tr-normal);
+}
+
+.card:hover .viewProject {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Empty State ===== */
+.emptyState {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.emptyText {
+    font-size: 1.1rem;
+    color: var(--c-text-light);
+}
+
+/* ===== CTA Section ===== */
+.ctaSection {
+    padding: 0 0 80px;
+}
+
+.ctaBox {
+    background: var(--grad-hero);
+    border-radius: var(--radius-lg);
+    padding: 64px 40px;
+    text-align: center;
+}
+
+.ctaTitle {
+    font-size: var(--fs-h2);
+    font-weight: 800;
+    color: var(--c-white);
+    margin-bottom: 18px;
+}
+
+.ctaDesc {
+    font-size: 1.08rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 32px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.9;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+    .hero {
+        padding: 120px 0 60px;
+    }
+
+    .heroPattern {
+        font-size: 12rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .filterBar {
+        gap: 8px;
+    }
+
+    .filterBtn {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 100px 0 50px;
+    }
+
+    .heroPattern {
+        font-size: 8rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        min-height: 300px;
+    }
+
+    .filterBtn {
+        padding: 9px 18px;
+        font-size: 0.8rem;
+    }
+
+    .ctaBox {
+        padding: 48px 28px;
+    }
+}

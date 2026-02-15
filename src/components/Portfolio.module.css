@@ -4,10 +4,63 @@
     overflow: hidden;
 }
 
+/* ===== Filter Bar ===== */
+.filterBar {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filterBtn {
+    position: relative;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.65);
+    padding: 10px 24px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: all var(--tr-normal);
+    overflow: hidden;
+}
+
+.filterBtn:hover {
+    color: var(--c-white);
+    border-color: rgba(0, 215, 255, 0.3);
+    background: rgba(0, 215, 255, 0.08);
+}
+
+.filterBtnActive {
+    color: var(--c-white);
+    border-color: var(--c-secondary);
+    background: rgba(0, 215, 255, 0.12);
+}
+
+.filterIndicator {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--c-secondary);
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 12px rgba(0, 215, 255, 0.25);
+    pointer-events: none;
+}
+
+/* ===== Grid ===== */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
+}
+
+/* Card Link */
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 /* Card */
@@ -15,15 +68,32 @@
     position: relative;
     border-radius: var(--radius-md);
     overflow: hidden;
-    min-height: 280px;
+    min-height: 320px;
     cursor: pointer;
-    transition: transform var(--tr-normal);
+    transition: transform var(--tr-normal), box-shadow var(--tr-normal);
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(89, 6, 150, 0.3);
 }
 
+/* Card Image (for projects with thumbnails) */
+.cardImage {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.cardImage img {
+    transition: transform 0.6s ease !important;
+}
+
+.card:hover .cardImage img {
+    transform: scale(1.08) !important;
+}
+
+/* Card BG (for projects without thumbnails) */
 .cardBg {
     position: absolute;
     inset: 0;
@@ -43,18 +113,27 @@
     user-select: none;
 }
 
+/* Overlay gradient for text readability */
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(0, 215, 255, 0.15), transparent);
-    opacity: 0;
+    background: linear-gradient(to top,
+            rgba(35, 31, 32, 0.95) 0%,
+            rgba(35, 31, 32, 0.7) 40%,
+            rgba(89, 6, 150, 0.3) 70%,
+            transparent 100%);
+    z-index: 1;
     transition: opacity var(--tr-normal);
 }
 
 .card:hover .overlay {
-    opacity: 1;
+    background: linear-gradient(to top,
+            rgba(35, 31, 32, 0.98) 0%,
+            rgba(89, 6, 150, 0.5) 50%,
+            rgba(0, 215, 255, 0.1) 100%);
 }
 
+/* Card Content */
 .cardContent {
     position: relative;
     z-index: 2;
@@ -96,16 +175,42 @@
     line-height: 1.7;
 }
 
+/* View Project Link */
+.viewProject {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--c-secondary);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity var(--tr-normal), transform var(--tr-normal);
+}
+
+.card:hover .viewProject {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* CTA */
 .cta {
     text-align: center;
     margin-top: 48px;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filterBar {
+        gap: 6px;
+    }
+
+    .filterBtn {
+        padding: 8px 16px;
+        font-size: 0.82rem;
     }
 }
 
@@ -115,6 +220,15 @@
     }
 
     .card {
-        min-height: 220px;
+        min-height: 260px;
+    }
+
+    .filterBar {
+        gap: 6px;
+    }
+
+    .filterBtn {
+        padding: 8px 14px;
+        font-size: 0.78rem;
     }
 }

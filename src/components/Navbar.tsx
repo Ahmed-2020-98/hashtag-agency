@@ -1,21 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Navbar.module.css";
+import MegaMenu, { MegaMenuMobile } from "./MegaMenu";
 
 const navLinks = [
-    { label: "الرئيسية", href: "#hero" },
-    { label: "من نحن", href: "#about" },
-    { label: "الخدمات", href: "#services" },
-    { label: "الأعمال", href: "#portfolio" },
-    { label: "المدونة", href: "#blog" },
-    { label: "تواصل معنا", href: "#contact" },
+    { label: "الرئيسية", href: "/" },
+    { label: "من نحن", href: "/#about" },
+    { label: "الخدمات", href: "/#services" },
+    { label: "الأعمال", href: "/works", hasMega: true },
+    { label: "المدونة", href: "/#blog" },
+    { label: "تواصل معنا", href: "/#contact" },
 ];
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [megaOpen, setMegaOpen] = useState(false);
+    const [mobileSubOpen, setMobileSubOpen] = useState(false);
+    const megaTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const navRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -31,8 +36,37 @@ export default function Navbar() {
         }
     }, [mobileOpen]);
 
+    // Close mega menu on outside click
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent) => {
+            if (navRef.current && !navRef.current.contains(e.target as Node)) {
+                setMegaOpen(false);
+            }
+        };
+        if (megaOpen) {
+            document.addEventListener("mousedown", handleClickOutside);
+        }
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [megaOpen]);
+
+    const handleMegaEnter = useCallback(() => {
+        if (megaTimeout.current) clearTimeout(megaTimeout.current);
+        setMegaOpen(true);
+    }, []);
+
+    const handleMegaLeave = useCallback(() => {
+        megaTimeout.current = setTimeout(() => setMegaOpen(false), 150);
+    }, []);
+
+    const closeMega = useCallback(() => setMegaOpen(false), []);
+    const closeMobile = useCallback(() => {
+        setMobileOpen(false);
+        setMobileSubOpen(false);
+    }, []);
+
     return (
         <motion.nav
+            ref={navRef}
             className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -48,9 +82,21 @@ export default function Navbar() {
                 {/* Desktop Links */}
                 <ul className={styles.desktopLinks}>
                     {navLinks.map((link) => (
-                        <li key={link.href}>
-                            <a href={link.href} className={styles.navLink}>
+                        <li
+                            key={link.href}
+                            className={link.hasMega ? styles.megaTrigger : undefined}
+                            onMouseEnter={link.hasMega ? handleMegaEnter : undefined}
+                        >
+                            <a
+                                href={link.href}
+                                className={`${styles.navLink} ${link.hasMega && megaOpen ? styles.navLinkActive : ""}`}
+                            >
                                 {link.label}
+                                {link.hasMega && (
+                                    <span className={`${styles.chevron} ${megaOpen ? styles.chevronUp : ""}`}>
+                                        ▾
+                                    </span>
+                                )}
                             </a>
                         </li>
                     ))}
@@ -73,6 +119,11 @@ export default function Navbar() {
                 </button>
             </div>
 
+            {/* Desktop Mega Menu */}
+            <AnimatePresence>
+                {megaOpen && <MegaMenu onClose={closeMega} />}
+            </AnimatePresence>
+
             {/* Mobile Menu */}
             <AnimatePresence>
                 {mobileOpen && (
@@ -91,20 +142,53 @@ export default function Navbar() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.07 }}
                                 >
-                                    <a
-                                        href={link.href}
-                                        className={styles.mobileLink}
-                                        onClick={() => setMobileOpen(false)}
-                                    >
-                                        {link.label}
-                                    </a>
+                                    {link.hasMega ? (
+                                        <>
+                                            <button
+                                                className={styles.mobileLink}
+                                                onClick={() => setMobileSubOpen((v) => !v)}
+                                                style={{
+                                                    background: "none",
+                                                    border: "none",
+                                                    width: "100%",
+                                                    textAlign: "right",
+                                                    display: "flex",
+                                                    alignItems: "center",
+                                                    justifyContent: "space-between",
+                                                }}
+                                            >
+                                                {link.label}
+                                                <span
+                                                    style={{
+                                                        transition: "transform 0.25s",
+                                                        transform: mobileSubOpen ? "rotate(180deg)" : "rotate(0)",
+                                                        fontSize: "0.8rem",
+                                                        color: "var(--c-secondary)",
+                                                    }}
+                                                >
+                                                    ▾
+                                                </span>
+                                            </button>
+                                            <AnimatePresence>
+                                                {mobileSubOpen && <MegaMenuMobile onClose={closeMobile} />}
+                                            </AnimatePresence>
+                                        </>
+                                    ) : (
+                                        <a
+                                            href={link.href}
+                                            className={styles.mobileLink}
+                                            onClick={closeMobile}
+                                        >
+                                            {link.label}
+                                        </a>
+                                    )}
                                 </motion.li>
                             ))}
                         </ul>
                         <a
                             href="#contact"
                             className="btn btn-primary"
-                            onClick={() => setMobileOpen(false)}
+                            onClick={closeMobile}
                             style={{ marginTop: 24, width: "100%" }}
                         >
                             ابدأ مشروعك

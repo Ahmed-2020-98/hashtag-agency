@@ -1,40 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import styles from "./Portfolio.module.css";
-
-const projects = [
-    {
-        title: "متجر إلكتروني لعلامة أزياء",
-        category: "تطوير متاجر",
-        desc: "متجر إلكتروني متكامل مع بوابات دفع سعودية وتجربة تسوق سلسة.",
-    },
-    {
-        title: "موقع شركة عقارية",
-        category: "تصميم مواقع",
-        desc: "موقع عصري يعرض المشاريع العقارية مع خرائط تفاعلية وحجز مواعيد.",
-    },
-    {
-        title: "منصة تعليمية",
-        category: "تطوير منصات",
-        desc: "منصة تعليم إلكتروني متكاملة مع نظام إدارة المحتوى والاشتراكات.",
-    },
-    {
-        title: "تطبيق مطعم",
-        category: "تطوير تطبيقات",
-        desc: "تطبيق ويب لمطعم مع نظام طلبات وقائمة تفاعلية وتتبع الطلبات.",
-    },
-    {
-        title: "بوابة خدمات حكومية",
-        category: "تصميم مواقع",
-        desc: "بوابة إلكترونية لتقديم الخدمات مع لوحة تحكم متقدمة.",
-    },
-    {
-        title: "موقع مكتب محاماة",
-        category: "تصميم مواقع",
-        desc: "موقع احترافي لمكتب محاماة مع نظام استشارات ومواعيد.",
-    },
-];
+import { projects } from "@/data/projectsData";
 
 export default function Portfolio() {
     return (
@@ -55,27 +25,44 @@ export default function Portfolio() {
                     </p>
                 </motion.div>
 
+                {/* Projects Grid */}
                 <div className={styles.grid}>
                     {projects.map((p, i) => (
                         <motion.div
-                            key={i}
-                            className={styles.card}
+                            key={p.slug}
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
-                            <div className={styles.cardBg}>
-                                <div className={styles.cardPattern}>
-                                    <span>#</span>
+                            <Link href={`/projects/${p.slug}`} className={styles.cardLink}>
+                                <div className={styles.card}>
+                                    {p.thumbnail ? (
+                                        <div className={styles.cardImage}>
+                                            <Image
+                                                src={p.thumbnail}
+                                                alt={p.title}
+                                                fill
+                                                sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+                                                style={{ objectFit: "cover" }}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className={styles.cardBg}>
+                                            <div className={styles.cardPattern}>
+                                                <span>#</span>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div className={styles.overlay} />
+                                    <div className={styles.cardContent}>
+                                        <span className={styles.category}>{p.category}</span>
+                                        <h3 className={styles.cardTitle}>{p.title}</h3>
+                                        <p className={styles.cardDesc}>{p.desc}</p>
+                                        <span className={styles.viewProject}>عرض المشروع ←</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={styles.overlay} />
-                            <div className={styles.cardContent}>
-                                <span className={styles.category}>{p.category}</span>
-                                <h3 className={styles.cardTitle}>{p.title}</h3>
-                                <p className={styles.cardDesc}>{p.desc}</p>
-                            </div>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>
@@ -87,7 +74,7 @@ export default function Portfolio() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                 >
-                    <a href="#contact" className="btn btn-outline">
+                    <a href="/works" className="btn btn-outline">
                         شاهد المزيد من أعمالنا
                     </a>
                 </motion.div>

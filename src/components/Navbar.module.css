@@ -110,6 +110,35 @@
     font-size: 0.9rem;
 }
 
+/* Mega Menu Trigger */
+.megaTrigger {
+    position: static;
+}
+
+.navLink {
+    cursor: pointer;
+}
+
+.navLinkActive {
+    color: var(--c-secondary) !important;
+}
+
+.navLinkActive::after {
+    width: 100% !important;
+}
+
+.chevron {
+    display: inline-block;
+    font-size: 0.7rem;
+    margin-right: 4px;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+}
+
+.chevronUp {
+    transform: rotate(180deg);
+}
+
 /* Hamburger */
 .hamburger {
     display: none;
