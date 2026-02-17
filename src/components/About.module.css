@@ -1,5 +1,6 @@
 .about {
     background: var(--c-bg);
+    overflow: hidden;
 }
 
 .grid {

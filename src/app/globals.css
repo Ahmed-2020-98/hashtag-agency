@@ -72,6 +72,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -88,9 +89,20 @@ a {
   text-decoration: none;
 }
 
-ul, ol { list-style: none; }
-img { max-width: 100%; display: block; }
-button { cursor: pointer; font-family: var(--font-main); }
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-main);
+}
 
 /* ===== Container ===== */
 .container {
@@ -177,8 +189,14 @@ button { cursor: pointer; font-family: var(--font-main); }
 }
 
 /* ===== Scrollbar ===== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-bg);
+}
+
 ::-webkit-scrollbar-thumb {
   background: var(--c-primary);
   border-radius: var(--radius-full);
@@ -186,6 +204,12 @@ button { cursor: pointer; font-family: var(--font-main); }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .btn { padding: 12px 28px; font-size: 0.95rem; }
-  .btn-group { justify-content: center; }
+  .btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
 }

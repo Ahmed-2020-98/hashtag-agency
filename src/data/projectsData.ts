@@ -25,6 +25,51 @@ export const projects: Project[] = [
         url: "https://hashtagagency.online/",
     },
     {
+        slug: "mazna-real-estate",
+        title: "موقع شركة مازنة للتطوير العقاري",
+        category: "تصميم مواقع",
+        desc: "موقع تعريفي احترافي لشركة تطوير عقاري مع تصميم متجاوب وتحسين محركات البحث.",
+        fullDescription:
+            "تصميم وتطوير موقع إلكتروني احترافي لشركة \"مازنة للتطوير العقاري\"، وهي شركة ناشئة متخصصة في التطوير العقاري والوساطة والبناء والترميم. الهدف كان إنشاء هوية رقمية قوية تعكس الجودة والمصداقية وتدعم ثقة العملاء والمستثمرين.\n\nتم تخصيص كامل لقالب BeTheme ليتناسب مع هوية شركة عقارية، وتصميم صفحات: الرئيسية – من نحن – خدماتنا – تواصل معنا. تنسيق احترافي للألوان والخطوط لتعكس الطابع العقاري مع ضبط الموقع ليكون متوافق مع الموبايل 100%.\n\nتم تحسين السرعة والأداء وإعداد SEO أساسي لتحسين الظهور في نتائج البحث. الدور في المشروع شمل تحليل احتياجات العميل، اختيار وتخصيص القالب، تصميم تجربة المستخدم (UX)، إعداد الاستضافة والدومين، وإطلاق الموقع وتجهيزه للعمل.",
+        thumbnail: "/assets/portfolio/websites/project2/4.webp",
+        images: [
+            "/assets/portfolio/websites/project2/4.webp",
+            "/assets/portfolio/websites/project2/5.webp",
+            "/assets/portfolio/websites/project2/6.webp",
+        ],
+        url: "https://maznarealestate.com/",
+    },
+    {
+        slug: "blackrocks-international",
+        title: "BLACK ROCKS International",
+        category: "تصميم مواقع",
+        desc: "موقع تعريفي احترافي لشركة مقاولات وبنية تحتية مع أنيميشن متقدمة وتجربة تصفح سلسة.",
+        fullDescription:
+            "تصميم وتطوير موقع احترافي بالكامل لشركة BLACK ROCKS International، وهي مجموعة متكاملة تعمل في مجالات المقاولات والهندسة والبنية التحتية عبر عدة دول.\n\nتم بناء الموقع من الصفر باستخدام تقنيات الويب الأساسية (HTML5, CSS3, JavaScript) بدون الاعتماد على أي Framework، لضمان أداء عالي وتحكم كامل في التجربة البصرية.\n\nيتميز الموقع بأنيميشن احترافية باستخدام GSAP و ScrollTrigger، سكرول سلس باستخدام Lenis، عرض إحصائيات ديناميكي (Counter Animation)، وتقسيم واضح لـ 9 قطاعات رئيسية. الموقع يدعم اللغة العربية و RTL بشكل كامل مع أداء سريع وخفيف.\n\nالدور في المشروع شمل تحليل الهوية البصرية للشركة، تصميم UI/UX من الصفر، كتابة الكود بالكامل يدويًا، بناء نظام أنيميشن متكامل، واختبار الأداء وتحسين السرعة.",
+        thumbnail: "/assets/portfolio/websites/project3/4.webp",
+        images: [
+            "/assets/portfolio/websites/project3/4.webp",
+            "/assets/portfolio/websites/project3/5.webp",
+            "/assets/portfolio/websites/project3/6.webp",
+        ],
+        url: "https://blackrocks-int.com/",
+    },
+    {
+        slug: "elite-city",
+        title: "Elite City",
+        category: "تصميم مواقع",
+        desc: "موقع تعريفي Corporate لمجموعة سعودية متعددة القطاعات مع تصميم حديث وأنيميشن احترافية.",
+        fullDescription:
+            "تصميم وتطوير موقع احترافي لمجموعة Elite City، وهي مجموعة سعودية رائدة متعددة القطاعات تعمل في مجالات التوريد الغذائي، الخدمات اللوجستية، الإلكترونيات، المقاولات والبناء، الحلول الرقمية وقطاعات أخرى متعددة.\n\nالهدف كان بناء هوية رقمية قوية تعكس خبرة +20 سنة وتبرز تنوع القطاعات بطريقة منظمة واحترافية. تم بناء الموقع باستخدام Next.js لضمان سرعة وتحسين محركات البحث، مع Framer Motion لإضافة أنيميشن احترافية وسلسة.\n\nيتميز الموقع بـ Hero Section احترافي، عرض 9 قطاعات بطريقة منظمة، Counter Animations للإحصائيات، قسم شركاء النجاح، صفحة مستودع مخصصة، ونموذج تواصل متكامل مع دعم كامل للغة العربية و RTL.\n\nالدور في المشروع شمل تحليل الهيكل المؤسسي للمجموعة، تصميم UI/UX حديث، بناء الموقع بالكامل باستخدام Next.js، تنفيذ أنيميشن احترافية، ضبط SEO وهيكلة الصفحات، وتحسين الأداء والسرعة.",
+        thumbnail: "/assets/portfolio/websites/project4/3.webp",
+        images: [
+            "/assets/portfolio/websites/project4/3.webp",
+            "/assets/portfolio/websites/project4/4.webp",
+            "/assets/portfolio/websites/project4/5.webp",
+        ],
+        url: "https://elitecityco.com/",
+    },
+    {
         slug: "fashion-store",
         title: "متجر إلكتروني لعلامة أزياء",
         category: "تطوير متاجر",

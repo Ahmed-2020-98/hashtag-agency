@@ -90,12 +90,7 @@ export default function ProjectDetailClient({ project }: Props) {
                                     <span className={styles.infoLabel}>التصنيف</span>
                                     <span className={styles.infoValue}>{project.category}</span>
                                 </div>
-                                <div className={styles.infoItem}>
-                                    <span className={styles.infoLabel}>عدد الصور</span>
-                                    <span className={styles.infoValue}>
-                                        {project.images.length} {project.images.length === 1 ? "صورة" : "صور"}
-                                    </span>
-                                </div>
+
                                 {project.url && (
                                     <div className={styles.infoItem}>
                                         <span className={styles.infoLabel}>الرابط</span>

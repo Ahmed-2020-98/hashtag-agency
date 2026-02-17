@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
 
 export const metadata: Metadata = {
   title: "هشتاج | تصميم مواقع إلكترونية احترافية في السعودية",
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body>
+        <Preloader />
         <Navbar />
         <main>{children}</main>
         <Footer />
