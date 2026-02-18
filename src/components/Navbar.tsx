@@ -86,6 +86,7 @@ export default function Navbar() {
                             key={link.href}
                             className={link.hasMega ? styles.megaTrigger : undefined}
                             onMouseEnter={link.hasMega ? handleMegaEnter : undefined}
+                            onMouseLeave={link.hasMega ? handleMegaLeave : undefined}
                         >
                             <a
                                 href={link.href}
@@ -120,9 +121,14 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Mega Menu */}
-            <AnimatePresence>
-                {megaOpen && <MegaMenu onClose={closeMega} />}
-            </AnimatePresence>
+            <div
+                onMouseEnter={handleMegaEnter}
+                onMouseLeave={handleMegaLeave}
+            >
+                <AnimatePresence>
+                    {megaOpen && <MegaMenu onClose={closeMega} />}
+                </AnimatePresence>
+            </div>
 
             {/* Mobile Menu */}
             <AnimatePresence>

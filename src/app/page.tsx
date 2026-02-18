@@ -4,10 +4,12 @@ import Services from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
 import Partners from "@/components/Partners";
 import SectionCTA from "@/components/SectionCTA";
+import Preloader from "@/components/Preloader";
 
 export default function Home() {
   return (
     <>
+      <Preloader />
       <Hero />
 
       <SectionCTA

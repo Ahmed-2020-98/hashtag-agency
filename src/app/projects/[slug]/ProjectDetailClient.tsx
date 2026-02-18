@@ -90,7 +90,12 @@ export default function ProjectDetailClient({ project }: Props) {
                                     <span className={styles.infoLabel}>التصنيف</span>
                                     <span className={styles.infoValue}>{project.category}</span>
                                 </div>
-
+                                {project.year && (
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>سنة التنفيذ</span>
+                                        <span className={styles.infoValue}>{project.year}</span>
+                                    </div>
+                                )}
                                 {project.url && (
                                     <div className={styles.infoItem}>
                                         <span className={styles.infoLabel}>الرابط</span>

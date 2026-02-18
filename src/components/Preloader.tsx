@@ -17,9 +17,15 @@ const particles = Array.from({ length: 8 }, (_, i) => ({
 
 export default function Preloader() {
     const [progress, setProgress] = useState(0);
-    const [visible, setVisible] = useState(true);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
+        // Only show on first visit per session
+        const hasLoaded = sessionStorage.getItem("preloaderShown");
+        if (hasLoaded) return;
+
+        setVisible(true);
+        sessionStorage.setItem("preloaderShown", "true");
         // Simulate loading progress
         const duration = 2200;
         const interval = 30;

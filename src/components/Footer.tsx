@@ -121,11 +121,11 @@ export default function Footer() {
                         </li>
                         <li className={styles.contactItem}>
                             <span className={styles.contactIcon}>📧</span>
-                            <span>info@hashtag.sa</span>
+                            <span>info@hashtagagency.online</span>
                         </li>
                         <li className={styles.contactItem}>
                             <span className={styles.contactIcon}>📱</span>
-                            <span style={{ direction: "ltr", unicodeBidi: "embed" }}>+966 50 000 0000</span>
+                            <span style={{ direction: "ltr", unicodeBidi: "embed" }}>+966 53 085 7717</span>
                         </li>
                     </ul>
                 </motion.div>
