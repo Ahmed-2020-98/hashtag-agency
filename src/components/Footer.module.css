@@ -22,17 +22,10 @@
     margin-bottom: 16px;
 }
 
-.brandHash {
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--c-secondary);
-    text-shadow: var(--glow-secondary);
-}
-
-.brandText {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--c-white);
+.brandLogo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
 .brandDesc {

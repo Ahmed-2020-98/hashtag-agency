@@ -27,34 +27,28 @@
 .logo {
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 1.5rem;
-    font-weight: 900;
     text-decoration: none;
-    transition: var(--tr-normal);
+    position: relative;
+    height: 50px;
 }
 
-.logoHash {
-    color: var(--c-secondary);
-    font-size: 2rem;
-    font-weight: 900;
-    text-shadow: var(--glow-secondary);
+.logoImg {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-.navbar:not(.scrolled) .logoHash {
-    color: var(--c-secondary);
+.logoImg:first-child {
+    position: relative;
 }
 
-.navbar:not(.scrolled) .logoText {
-    color: var(--c-white);
-}
-
-.navbar.scrolled .logoHash {
-    color: var(--c-secondary);
-}
-
-.navbar.scrolled .logoText {
-    color: var(--c-primary);
+.logoHidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* Desktop Links */

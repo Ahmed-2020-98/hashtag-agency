@@ -75,8 +75,16 @@ export default function Navbar() {
             <div className={`container ${styles.inner}`}>
                 {/* Logo */}
                 <a href="#hero" className={styles.logo}>
-                    <span className={styles.logoHash}>#</span>
-                    <span className={styles.logoText}>هشتاج</span>
+                    <img
+                        src="/assets/logo/logo4.webp"
+                        alt="هشتاج"
+                        className={`${styles.logoImg} ${scrolled ? styles.logoHidden : ''}`}
+                    />
+                    <img
+                        src="/assets/logo/logo3.webp"
+                        alt="هشتاج"
+                        className={`${styles.logoImg} ${!scrolled ? styles.logoHidden : ''}`}
+                    />
                 </a>
 
                 {/* Desktop Links */}

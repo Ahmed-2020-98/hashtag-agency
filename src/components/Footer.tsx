@@ -34,8 +34,11 @@ export default function Footer() {
                     transition={{ duration: 0.5 }}
                 >
                     <div className={styles.brand}>
-                        <span className={styles.brandHash}>#</span>
-                        <span className={styles.brandText}>هشتاج</span>
+                        <img
+                            src="/assets/logo/logo-footer1.webp"
+                            alt="هشتاج"
+                            className={styles.brandLogo}
+                        />
                     </div>
                     <p className={styles.brandDesc}>
                         شركة سعودية متخصصة في تصميم وتطوير المواقع الإلكترونية
