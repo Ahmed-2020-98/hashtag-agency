@@ -1,0 +1,79 @@
+.finalCTA {
+    position: relative;
+    background: var(--grad-hero);
+    overflow: hidden;
+}
+
+.bgPattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 215, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(89, 6, 150, 0.15) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: var(--fs-h1);
+    font-weight: 800;
+    color: var(--c-white);
+    margin-bottom: 20px;
+}
+
+.desc {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--c-white);
+    font-size: 1rem;
+}
+
+.check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--c-secondary);
+    color: var(--c-primary);
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .features {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .feature {
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-full);
+    }
+}

@@ -9,30 +9,38 @@ const columns = [
         icon: "💻",
         title: "مواقع إلكترونية",
         links: [
-            "موقع تعريفي",
-            "مواقع محاماة",
-            "مواقع مقاولات",
-            "مواقع شركات",
-            "مواقع شخصية",
+            { label: "موقع تعريفي", href: "/works" },
+            { label: "مواقع محاماة", href: "/works" },
+            { label: "مواقع مقاولات", href: "/works" },
+            { label: "مواقع شركات", href: "/works" },
+            { label: "مواقع شخصية", href: "/works" },
         ],
     },
     {
         icon: "🎓",
         title: "منصات تعليمية",
-        links: ["أنظمة كورسات", "أنظمة اختبارات", "بوابات طلاب"],
+        links: [
+            { label: "أنظمة كورسات", href: "/works" },
+            { label: "أنظمة اختبارات", href: "/works" },
+            { label: "بوابات طلاب", href: "/works" },
+        ],
     },
     {
         icon: "📱",
         title: "تطبيقات موبايل",
-        links: ["تطبيقات iOS", "تطبيقات Android", "تطبيقات Hybrid"],
+        links: [
+            { label: "تطبيقات iOS", href: "/works" },
+            { label: "تطبيقات Android", href: "/works" },
+            { label: "تطبيقات Hybrid", href: "/works" },
+        ],
     },
     {
         icon: "🚀",
         title: "خدمات رقمية",
         links: [
-            "تحسين محركات البحث SEO",
-            "تصميم الهوية البصرية",
-            "تطوير متاجر إلكترونية",
+            { label: "تحسين محركات البحث SEO", href: "/seo" },
+            { label: "تصميم الهوية البصرية", href: "/works" },
+            { label: "تطوير متاجر إلكترونية", href: "/works" },
         ],
     },
 ];
@@ -83,9 +91,9 @@ export default function MegaMenu({ onClose }: MegaMenuProps) {
                             <ul className={styles.linkList}>
                                 {col.links.map((link, j) => (
                                     <li key={j}>
-                                        <a href="/works" className={styles.link} onClick={onClose}>
+                                        <a href={link.href} className={styles.link} onClick={onClose}>
                                             <span className={styles.linkArrow}>‹</span>
-                                            {link}
+                                            {link.label}
                                         </a>
                                     </li>
                                 ))}
@@ -169,8 +177,8 @@ function MobileAccordionItem({
                     >
                         {col.links.map((link, j) => (
                             <li key={j}>
-                                <a href="/works" className={styles.accordionLink} onClick={onClose}>
-                                    {link}
+                                <a href={link.href} className={styles.accordionLink} onClick={onClose}>
+                                    {link.label}
                                 </a>
                             </li>
                         ))}

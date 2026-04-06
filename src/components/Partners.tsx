@@ -1,19 +1,28 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./Partners.module.css";
 
 const partners = [
-    "شركة الرياض التقنية",
-    "مجموعة الخليج",
-    "تقنيات المستقبل",
-    "الدار الرقمية",
-    "بنك الابتكار",
-    "سعودي تك",
-    "المملكة الذكية",
-    "رؤية 2030",
-    "تقنية بلس",
-    "ديجيتال هب",
+    "/assets/partners/partners1.webp",
+    "/assets/partners/partners2.webp",
+    "/assets/partners/partners3.webp",
+    "/assets/partners/partners4.webp",
+    "/assets/partners/partners5.webp",
+    "/assets/partners/partners6.webp",
+    "/assets/partners/partners7.webp",
+    "/assets/partners/partners8.webp",
+    "/assets/partners/partners9.webp",
+    "/assets/partners/partners10.webp",
+    "/assets/partners/partners11.webp",
+    "/assets/partners/partners12.webp",
+    "/assets/partners/partners13.webp",
+    "/assets/partners/partners14.webp",
+    "/assets/partners/partners15.webp",
+    "/assets/partners/partners16.webp",
+    "/assets/partners/partners17.webp",
+    "/assets/partners/partners18.webp",
 ];
 
 export default function Partners() {
@@ -36,11 +45,16 @@ export default function Partners() {
             <div className={styles.sliderWrapper}>
                 <div className={styles.slider}>
                     <div className={styles.track}>
-                        {[...partners, ...partners].map((name, i) => (
+                        {[...partners, ...partners].map((src, i) => (
                             <div key={i} className={styles.logoCard}>
                                 <div className={styles.logoInner}>
-                                    <span className={styles.logoHash}>#</span>
-                                    <span className={styles.logoName}>{name}</span>
+                                    <Image
+                                        src={src}
+                                        alt={`شريك ${i + 1}`}
+                                        width={160}
+                                        height={60}
+                                        className={styles.partnerImage}
+                                    />
                                 </div>
                             </div>
                         ))}
